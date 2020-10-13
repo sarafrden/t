@@ -1,0 +1,837 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel OpenApi Demo Documentation",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "admin@admin.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Insert new User",
+                "description": "Returns User data",
+                "operationId": "Insert Users",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login User",
+                "description": "Returns Access token",
+                "operationId": "Login User",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "api/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "logout User",
+                "description": "Returns logout",
+                "operationId": "logoutUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/auth/user": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get the authenticated User",
+                "description": "Returns user info",
+                "operationId": "authenticatedUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/Employees/getList": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get list of Employees",
+                "description": "Returns list of Employees",
+                "operationId": "getEmployeesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/Employees/getById/{id}": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Get single Employees",
+                "description": "Returns Get single Employees",
+                "operationId": "GetSingleEmployee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employees id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/auth/Employees/create": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Insert new Employee",
+                "description": "Returns Employee data",
+                "operationId": "Insert Employee",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/auth/Employees/{id}/update": {
+            "post": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Insert new Employee info",
+                "description": "Returns Employee data",
+                "operationId": "Update Employee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employee id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/auth/Employees/{id}/delete": {
+            "get": {
+                "tags": [
+                    "Employees"
+                ],
+                "summary": "Delete single Employee",
+                "description": "Returns Deleted",
+                "operationId": "DeleteSingleEmployee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Employee id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/Managers/getList": {
+            "post": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get list of Managers",
+                "description": "Returns list of Managers",
+                "operationId": "getManagersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Manager"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/Managers/getById/{id}": {
+            "get": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get single Managers",
+                "description": "Returns Get single Managers",
+                "operationId": "GetSingleManager",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Managers id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Manager"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/auth/Managers/create": {
+            "post": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Insert new Manager",
+                "description": "Returns Manager data",
+                "operationId": "Insert Manager",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Manager"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Manager"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/auth/Managers/{id}/update": {
+            "post": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Insert new Manager info",
+                "description": "Returns Manager data",
+                "operationId": "Update Manager",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Manager id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Manager"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Manager"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/auth/Managers/{id}/delete": {
+            "get": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Delete single Manager",
+                "description": "Returns Deleted",
+                "operationId": "DeleteSingleManager",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Manager id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Manager"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/auth/Managers/{id}/getEmployeeList": {
+            "post": {
+                "tags": [
+                    "Managers"
+                ],
+                "summary": "Get list of Managers Employee",
+                "description": "Returns list of Managers Employee",
+                "operationId": "getManagersEmployeeList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Manager"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/auth/Users/{id}/update": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Insert new User info",
+                "description": "Returns User data",
+                "operationId": "Update User",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "api/Users/getList": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get list of Users",
+                "description": "Returns list of Users",
+                "operationId": "getUsersList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/Users/{id}/getById": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get single Users",
+                "description": "Returns Get single Users",
+                "operationId": "GetSingleUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Users id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "api/auth/Users/{id}/delete": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete single User",
+                "description": "Returns Deleted",
+                "operationId": "DeleteSingleUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Employee": {
+                "title": "Employee",
+                "description": "Employee model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Employee name",
+                        "type": "string",
+                        "example": "Sara"
+                    },
+                    "phone_number": {
+                        "title": "phone",
+                        "description": "Employee phone",
+                        "type": "string",
+                        "example": "0770*******"
+                    },
+                    "img": {
+                        "title": "img",
+                        "description": "Employee picture",
+                        "type": "string",
+                        "example": "img"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new user",
+                        "type": "string",
+                        "example": "sara@gmail.com"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Employee"
+                }
+            },
+            "Manager": {
+                "title": "Manager",
+                "description": "Manager model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "Manager name",
+                        "type": "string",
+                        "example": "Sara"
+                    },
+                    "phone_number": {
+                        "title": "phone",
+                        "description": "Manager phone",
+                        "type": "string",
+                        "example": "0770*******"
+                    },
+                    "img": {
+                        "title": "img",
+                        "description": "Manager picture",
+                        "type": "string",
+                        "example": "img"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new user",
+                        "type": "string",
+                        "example": "sara@gmail.com"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Manager"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "name",
+                        "description": "name of the new user",
+                        "type": "string",
+                        "example": "sara"
+                    },
+                    "type": {
+                        "title": "type",
+                        "description": "type of the new user",
+                        "type": "string",
+                        "example": "admin"
+                    },
+                    "phone_number": {
+                        "title": "phone_number",
+                        "description": "phone_number of the new user",
+                        "type": "string",
+                        "example": "07707722504"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Password of the new user",
+                        "type": "string",
+                        "example": "sara1234"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new user",
+                        "type": "string",
+                        "example": "sara@gmail.com"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        },
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API Endpoints of Users"
+        },
+        {
+            "name": "Auth",
+            "description": "API Endpoints of Auth"
+        },
+        {
+            "name": "Managers",
+            "description": "API Endpoints of Managers"
+        },
+        {
+            "name": "Empolyees",
+            "description": "API Endpoints of Empolyees"
+        }
+    ]
+}
